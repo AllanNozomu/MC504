@@ -13,3 +13,5 @@ void queue_add(queue* q_pt, int val);
 int queue_remove(queue* q_pt);
 int queue_is_full(queue q);
 int queue_is_empty(queue q);
+int queue_length(queue q);
+int queue_status(queue q, int pos);

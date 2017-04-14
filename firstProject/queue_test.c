@@ -30,18 +30,22 @@ int main()
   {
     fila_adiciona(i);
   }
+  printf("Tamanho da lista %d\n", queue_length(fila));
   for (int i = 0 ; i < 5 ; ++i)
   {
     fila_remove();
   }
+   printf("Tamanho da lista %d\n", queue_length(fila));
   for (int i = 0 ; i < 10 ; ++i)
   {
     fila_adiciona(i);
   }
+   printf("Tamanho da lista %d\n", queue_length(fila));
   for (int i = 0 ; i < 11 ; ++i)
   {
     fila_remove();
   }
+   printf("Tamanho da lista %d\n", queue_length(fila));
 
   return 0;
 }
