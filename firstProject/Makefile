@@ -3,7 +3,7 @@ FLAGS=-lncurses -lpthread
 all: barbeiro
 
 barbeiro:
-	gcc barbeiro.c -o barbeiro $(FLAGS)
+	gcc barbeiro.c queue.c -o barbeiro $(FLAGS)
 
 queue_test:
 	gcc queue_test.c queue.c -o queue_test $(FLAGS)
