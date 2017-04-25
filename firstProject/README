@@ -1,0 +1,10 @@
+Allan Nozomu Fukasawa       163527
+Thomas Jun Yamasaki         177677
+Marcio Ivan Coelho Filho    173645
+Eduardo Yuji Sakabe         166810
+
+Este trabalho representa o problema da barbearia com fila de espera. Implementamos apenas um barbeiro e utilizamos recursos visuais para o tornar mais atrativo e user-friendly.
+
+Existe um barbeiro que dorme enquanto não há nenhum cliente para ser atendido. Ele demora 2 segundos para cortar cada cabelo.
+Existem 15 clientes que entram randomicamente na fila esperando ter seu cabelo cortado, acordando o barbeiro caso necessário.
+Se a fila já estiver cheia, este desiste de cortar o cabelo e vai embora.
