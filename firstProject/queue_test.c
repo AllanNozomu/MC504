@@ -26,11 +26,18 @@ void fila_remove(){
 int main()
 {
   queue_init(&fila, 10);
+  fila_adiciona(0);
+  printf("Tamanho da lista %d\n", queue_length(fila));
+  printf("Elemento da lista %d\n", queue_status(fila, 0));
   for (int i = 0 ; i < 10 ; ++i)
   {
     fila_adiciona(i);
   }
   printf("Tamanho da lista %d\n", queue_length(fila));
+  for (int i = 0 ; i < 5 ; ++i)
+  {
+    printf("Elemento em %d da lista %d\n",i, queue_status(fila, i));
+  }
   for (int i = 0 ; i < 5 ; ++i)
   {
     fila_remove();
@@ -39,6 +46,10 @@ int main()
   for (int i = 0 ; i < 10 ; ++i)
   {
     fila_adiciona(i);
+  }
+  for (int i = 0 ; i < 5 ; ++i)
+  {
+    printf("Elemento em %d da lista %d\n",i, queue_status(fila, i));
   }
    printf("Tamanho da lista %d\n", queue_length(fila));
   for (int i = 0 ; i < 11 ; ++i)

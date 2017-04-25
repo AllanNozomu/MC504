@@ -5,6 +5,7 @@
 #include <unistd.h>
 #include <ncurses.h>
 #include "queue.h"
+#define MAX 1000
 
 sem_t mutex;
 sem_t sem_cadeira;
@@ -21,8 +22,8 @@ int quantidadeClientes;
 
 pthread_t barbeiro;
 pthread_t pintor;
-pthread_t cliente[15];
-int ld[15];
+pthread_t cliente[1000];
+int ld[1000];
 
 void paint() {
     clear();
@@ -104,7 +105,7 @@ void paint() {
     printw("Desistiram de cortar o cabelo: ");
     int tamanhoFilaDesistencia = queue_length(filaDesistencia);
 
-    for (i = 0 ; i < tamanhoFilaDesistencia; ++i){
+    for (i = 0 ; i < tamanhoFilaDesistencia; i++){
         printw("%2d ", queue_status(filaDesistencia, i));
     }
     printw("\n");
@@ -173,9 +174,10 @@ int main() {
     queue_init(&fila, quantidadeCadeiras);
     queue_init(&filaDesistencia, quantidadeClientes);
     sem_init(&mutex, 0, 1);
-    sem_init(&sem_cadeira, 0, quantidadeCadeiras + 1);
+    sem_init(&sem_cadeira, 0, quantidadeCadeiras);
     sem_init(&sem_cadeira_atendimento, 0, 1);
     sem_init(&sem_cabelo_cortado, 0, 0);
+    sem_init(&sem_acorda_barbeiro, 0, 0);
 
     int j = 0;
     int id[quantidadeClientes];
@@ -185,10 +187,12 @@ int main() {
     pthread_create(&barbeiro, NULL, &f_barbeiro, NULL);
 
     sleep(1);
+
     for(j = 0; j < quantidadeClientes; j++) {
         id[j] = j;
-        sleep(rand()%2);
+
         pthread_create(&cliente[j], NULL, &f_cliente, (void *) &id[j]);
+        sleep(rand()%2);
     }
 
     for(int i = 0; i < quantidadeClientes; i++)
